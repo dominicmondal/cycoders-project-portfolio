@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dominic Debashis Mondal - Computer Science Student, Competitive Programmer & State-Level Basketball Player. Explore my projects, skills, and athletic journey.">
+  <meta name="keywords" content="Dominic Debashis Mondal, Portfolio, Computer Science, Developer, Basketball, Adamas University, St Joseph's College, Java, C, JavaScript, HackerRank">
+  <meta name="author" content="Dominic Debashis Mondal">
+
+  <!-- Open Graph / Social Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dominic Debashis Mondal | Code Meets The Court">
+  <meta property="og:description" content="Portfolio of Dominic Debashis Mondal - Computer Science Student, Developer & State-Level Basketball Player.">
+  <meta property="og:image" content="assets/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dominic Debashis Mondal | Code Meets The Court">
+  <meta name="twitter:description" content="Computer Science Student, Developer & State-Level Basketball Player.">
+
+  <title>Dominic Debashis Mondal | Code Meets The Court</title>
+
+  <!-- Favicon: Dynamic SVG Basketball -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23ff6b1a' stroke='%230a0a0f' stroke-width='4'/%3E%3Cpath d='M50 2 A48 48 0 0 1 50 98' fill='none' stroke='%230a0a0f' stroke-width='4'/%3E%3Cpath d='M2 50 A48 48 0 0 1 98 50' fill='none' stroke='%230a0a0f' stroke-width='4'/%3E%3Cpath d='M15 15 Q50 50 15 85' fill='none' stroke='%230a0a0f' stroke-width='4'/%3E%3Cpath d='M85 15 Q50 50 85 85' fill='none' stroke='%230a0a0f' stroke-width='4'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts: Bebas Neue, Space Grotesk, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Screen Reader Live Region for Announcements -->
+  <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Page Preloader (Bouncing Basketball Animation) -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-content">
+      <div class="preloader-court-lines"></div>
+      <div class="bouncing-ball-wrapper">
+        <div class="bouncing-ball">
+          <div class="ball-seam-h"></div>
+          <div class="ball-seam-v"></div>
+          <div class="ball-seam-curve-l"></div>
+          <div class="ball-seam-curve-r"></div>
+        </div>
+        <div class="ball-shadow"></div>
+        <div class="court-impact-ring"></div>
+      </div>
+      <div class="preloader-text">
+        <span class="preloader-brand">DOMINIC</span>
+        <div class="preloader-bar">
+          <div class="preloader-progress" id="preloaderProgress"></div>
+        </div>
+        <span class="preloader-sub">INITIALIZING THE COURT...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Indicator (Top of viewport) -->
+  <div id="scrollProgress" class="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Custom Cursor System (Desktop only) -->
+  <div class="custom-cursor" id="customCursor" aria-hidden="true">
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-trail" id="cursorTrail"></div>
+    <span class="cursor-label" id="cursorLabel"></span>
+  </div>
+
+  <!-- Ambient Glow & Mesh Background -->
+  <div class="ambient-glow glow-orange" aria-hidden="true"></div>
+  <div class="ambient-glow glow-cyan" aria-hidden="true"></div>
+  <div class="ambient-glow glow-purple" aria-hidden="true"></div>
+  <div class="court-grid-pattern" aria-hidden="true"></div>
+
+  <!-- Sticky Glass Navigation Header -->
+  <header class="navbar-header" id="navbarHeader">
+    <nav class="navbar-container" aria-label="Main Navigation">
+      <a href="#hero" class="nav-brand" aria-label="Dominic Debashis Mondal Home">
+        <span class="brand-ball-icon" aria-hidden="true">
+          <svg viewBox="0 0 100 100" class="mini-ball-svg">
+            <circle cx="50" cy="50" r="46" fill="var(--color-primary)" stroke="currentColor" stroke-width="5"/>
+            <path d="M50 4 A46 46 0 0 1 50 96" fill="none" stroke="currentColor" stroke-width="4"/>
+            <path d="M4 50 A46 46 0 0 1 96 50" fill="none" stroke="currentColor" stroke-width="4"/>
+            <path d="M16 16 Q50 50 16 84" fill="none" stroke="currentColor" stroke-width="4"/>
+            <path d="M84 16 Q50 50 84 84" fill="none" stroke="currentColor" stroke-width="4"/>
+          </svg>
+        </span>
+        <span class="brand-text">DOMINIC<span class="brand-dot">.</span>DEV</span>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <ul class="nav-links" id="desktopNavLinks">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#sports" class="nav-link">Court & Sports</a></li>
+        <li><a href="#hobbies" class="nav-link">Interests</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <!-- Nav Actions (Theme Toggle & CTA) -->
+      <div class="nav-actions">
+        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle light or dark theme" title="Toggle theme">
+          <i class="fa-solid fa-moon icon-moon" aria-hidden="true"></i>
+          <i class="fa-solid fa-sun icon-sun" aria-hidden="true"></i>
+        </button>
+
+        <a href="#contact" class="nav-cta-btn magnetic-btn">
+          <span>Let's Connect</span>
+          <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobileOverlay">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Full-Screen Mobile Menu Overlay -->
+  <div id="mobileOverlay" class="mobile-menu-overlay" aria-hidden="true">
+    <div class="mobile-overlay-header">
+      <span class="mobile-overlay-title">NAVIGATION</span>
+      <button id="mobileCloseBtn" class="mobile-close-btn" aria-label="Close mobile menu">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="#hero" class="mobile-nav-link" data-number="01"><span>Home</span></a></li>
+      <li><a href="#about" class="mobile-nav-link" data-number="02"><span>About Me</span></a></li>
+      <li><a href="#education" class="mobile-nav-link" data-number="03"><span>Education</span></a></li>
+      <li><a href="#skills" class="mobile-nav-link" data-number="04"><span>Skills & HackerRank</span></a></li>
+      <li><a href="#sports" class="mobile-nav-link" data-number="05"><span>Court & Athletics</span></a></li>
+      <li><a href="#hobbies" class="mobile-nav-link" data-number="06"><span>Interests & Bento</span></a></li>
+      <li><a href="#contact" class="mobile-nav-link" data-number="07"><span>Get In Touch</span></a></li>
+    </ul>
+    <div class="mobile-overlay-footer">
+      <p class="mobile-overlay-quote">"Where code precision meets basketball grit."</p>
+      <div class="mobile-socials">
+        <a href="mailto:dominicdebashismondal@gmail.com" aria-label="Send Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://hackerrank.com" target="_blank" rel="noopener noreferrer" aria-label="HackerRank Profile"><i class="fa-brands fa-hackerrank"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <main id="mainContent">
+
+    <!-- ==================== 1. HERO SECTION ==================== -->
+    <section id="hero" class="hero-section" aria-label="Introduction">
+      <div class="court-decor-lines" aria-hidden="true">
+        <div class="court-circle-top"></div>
+        <div class="court-free-throw"></div>
+      </div>
+
+      <div class="hero-container">
+        <!-- Hero Left / Top: Giant Typography -->
+        <div class="hero-text-content">
+          <div class="hero-badge">
+            <span class="badge-pulsing-dot"></span>
+            <span class="badge-tag">PORTFOLIO &bull; 2026</span>
+            <span class="badge-divider">|</span>
+            <span class="badge-highlight">CODE MEETS THE COURT</span>
+          </div>
+
+          <h1 class="hero-title" aria-label="Dominic Debashis Mondal">
+            <span class="hero-name-line name-first" data-reveal="DOMINIC">DOMINIC</span>
+            <span class="hero-name-line name-mid outline-text" data-reveal="DEBASHIS">DEBASHIS</span>
+            <span class="hero-name-line name-last" data-reveal="MONDAL">MONDAL</span>
+          </h1>
+
+          <!-- Dynamic Role Cycling Text -->
+          <div class="hero-role-wrapper">
+            <span class="role-intro">I AM A</span>
+            <div class="role-scroller">
+              <span class="role-dynamic" id="roleDynamic">CS Student</span>
+              <span class="role-cursor" aria-hidden="true">|</span>
+            </div>
+          </div>
+
+          <p class="hero-bio">
+            Computer Science undergraduate at <strong>Adamas University</strong>, fusing the precision of algorithms with the relentless grit and tactical instincts forged on the basketball court. Crafting performant software, solving algorithmic challenges, and leading teams to victory.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#sports" class="btn btn-primary magnetic-btn" data-cursor="EXPLORE">
+              <i class="fa-solid fa-basketball" aria-hidden="true"></i>
+              <span>Explore The Court</span>
+            </a>
+            <a href="#contact" class="btn btn-glass magnetic-btn" data-cursor="CONNECT">
+              <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+              <span>Get In Touch</span>
+            </a>
+            <a href="https://hackerrank.com" target="_blank" rel="noopener noreferrer" class="hero-pill-badge" title="View 4-Star HackerRank Profile" data-cursor="4-STAR">
+              <i class="fa-brands fa-hackerrank" aria-hidden="true"></i>
+              <span>4-Star HackerRank</span>
+              <span class="star-rating">★★★★</span>
+            </a>
+          </div>
+
+          <div class="hero-quick-stats">
+            <div class="stat-pill">
+              <span class="stat-num" data-count="4">0</span><span class="stat-plus">★</span>
+              <span class="stat-lbl">HackerRank Rating</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-num" data-count="100">0</span><span class="stat-plus">%</span>
+              <span class="stat-lbl">Academic & Court Passion</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-num" data-count="2">0</span><span class="stat-plus">+</span>
+              <span class="stat-lbl">State Tournaments</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right: 3D / CSS Interactive Spinning Basketball -->
+        <div class="hero-visual-content">
+          <div class="basketball-stage" id="basketballStage" title="Hover or Click to Spin & Bounce!">
+            <div class="court-backboard-decor" aria-hidden="true">
+              <div class="backboard-glass">
+                <div class="rim-target"></div>
+                <div class="hoop-rim"></div>
+                <div class="hoop-net"></div>
+              </div>
+            </div>
+
+            <!-- Interactive 3D CSS Basketball -->
+            <div class="basketball-3d" id="interactiveBasketball" role="button" tabindex="0" aria-label="Interactive 3D Basketball. Click to trigger bounce play!">
+              <div class="ball-surface">
+                <!-- Textured Leather Panels & Seams -->
+                <div class="ball-dimples"></div>
+                <div class="seam-line horizontal"></div>
+                <div class="seam-line vertical"></div>
+                <div class="seam-line curve-left"></div>
+                <div class="seam-line curve-right"></div>
+                <div class="ball-logo-stamp">
+                  <span>DDM</span>
+                  <small>No. 23</small>
+                </div>
+                <div class="ball-specular-highlight"></div>
+              </div>
+              <div class="ball-contact-shadow"></div>
+              <div class="ball-shockwave"></div>
+            </div>
+
+            <div class="interactive-hint">
+              <i class="fa-solid fa-hand-pointer"></i>
+              <span>Click or Drag to Shoot & Spin</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Scroll Indicator -->
+      <a href="#about" class="hero-scroll-indicator" aria-label="Scroll down to About Me">
+        <span class="scroll-mouse">
+          <span class="scroll-wheel"></span>
+        </span>
+        <span class="scroll-text">SCROLL TO DISCOVER</span>
+      </a>
+    </section>
+
+    <!-- ==================== INFINITE MARQUEE STRIP 1 ==================== -->
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item"><i class="fa-solid fa-code"></i> C PROGRAMMING</span>
+        <span class="marquee-item"><i class="fa-brands fa-java"></i> JAVA DEVELOPER</span>
+        <span class="marquee-item"><i class="fa-brands fa-js"></i> JAVASCRIPT</span>
+        <span class="marquee-item"><i class="fa-brands fa-html5"></i> MODERN HTML5</span>
+        <span class="marquee-item"><i class="fa-solid fa-basketball"></i> STATE CHAMPIONSHIPS</span>
+        <span class="marquee-item"><i class="fa-brands fa-hackerrank"></i> 4-STAR HACKERRANK</span>
+        <span class="marquee-item"><i class="fa-solid fa-palette"></i> ART & SKETCHING</span>
+        <span class="marquee-item"><i class="fa-solid fa-utensils"></i> CULINARY ARTS</span>
+        <span class="marquee-item"><i class="fa-solid fa-users-gear"></i> TEAM MANAGEMENT</span>
+        <!-- Duplicated for seamless infinite scroll -->
+        <span class="marquee-item"><i class="fa-solid fa-code"></i> C PROGRAMMING</span>
+        <span class="marquee-item"><i class="fa-brands fa-java"></i> JAVA DEVELOPER</span>
+        <span class="marquee-item"><i class="fa-brands fa-js"></i> JAVASCRIPT</span>
+        <span class="marquee-item"><i class="fa-brands fa-html5"></i> MODERN HTML5</span>
+        <span class="marquee-item"><i class="fa-solid fa-basketball"></i> STATE CHAMPIONSHIPS</span>
+        <span class="marquee-item"><i class="fa-brands fa-hackerrank"></i> 4-STAR HACKERRANK</span>
+        <span class="marquee-item"><i class="fa-solid fa-palette"></i> ART & SKETCHING</span>
+        <span class="marquee-item"><i class="fa-solid fa-utensils"></i> CULINARY ARTS</span>
+        <span class="marquee-item"><i class="fa-solid fa-users-gear"></i> TEAM MANAGEMENT</span>
+      </div>
+    </div>
+
+    <!-- ==================== 2. ABOUT ME SECTION ==================== -->
+    <section id="about" class="section about-section" aria-labelledby="aboutHeading">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-badge">01 // IDENTITY</span>
+          <h2 id="aboutHeading" class="section-title">
+            THE DRIVE BEHIND <span class="highlight-orange">THE CODE & COURT</span>
+          </h2>
+          <p class="section-subtitle">Bridging computational logic with the high-tempo endurance of competitive basketball.</p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Left: Animated Cyber Blob Photo Container -->
+          <div class="about-photo-card tilt-card" data-tilt data-tilt-max="8" data-tilt-glare="true" data-tilt-max-glare="0.2">
+            <div class="photo-blob-wrapper">
+              <div class="blob-glow-ring"></div>
+              <div class="cyber-frame-corners"></div>
+              <div class="photo-blob-shape">
+                <!-- Avatar Graphic Placeholder with Cyber Aesthetic -->
+                <div class="avatar-cyber-art">
+                  <div class="avatar-silhouette">
+                    <i class="fa-solid fa-user-astronaut avatar-icon"></i>
+                  </div>
+                  <div class="avatar-overlay-badge">
+                    <i class="fa-solid fa-basketball"></i>
+                    <span>DOMINIC #23</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Player Card Badge -->
+            <div class="player-stats-card glass-panel">
+              <div class="player-row">
+                <span class="p-label">PLAYER</span>
+                <span class="p-val">Dominic D. Mondal</span>
+              </div>
+              <div class="player-row">
+                <span class="p-label">POSITION</span>
+                <span class="p-val">Full-Stack & Point Guard</span>
+              </div>
+              <div class="player-row">
+                <span class="p-label">ALMA MATER</span>
+                <span class="p-val">St. Joseph's College</span>
+              </div>
+              <div class="player-row">
+                <span class="p-label">CURRENT</span>
+                <span class="p-val">Adamas University (SOET)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Narrative & Highlights -->
+          <div class="about-text-content">
+            <div class="story-card glass-panel">
+              <h3 class="story-title">
+                <i class="fa-solid fa-terminal orange-icon"></i>
+                Two Arenas. One Mindset.
+              </h3>
+              <p class="story-p">
+                Hello! I am <strong>Dominic Debashis Mondal</strong>, a Computer Science & Engineering student at <strong>Adamas University's School of Engineering and Technology</strong>. My educational journey began at <strong>St. Joseph's College</strong>, where I completed both my ICSE and ISC board examinations with exceptional academic marks.
+              </p>
+              <p class="story-p">
+                To me, programming and basketball are two reflections of the exact same passion: <em>split-second decision-making, meticulous structure, and tactical foresight</em>. When I am debugging memory layouts in C or architecting object models in Java, I apply the same disciplined spatial awareness and pressure handling that took me from inter-school basketball courts to the <strong>State-Level Basketball Championships</strong>.
+              </p>
+              <p class="story-p">
+                My philosophy is simple: <strong>extracurricular activities are as vital as academic excellence</strong>. Whether leading team operations, sketching fine-art concepts, or experimenting with culinary creations, I bring complete focus and dedication to everything I build.
+              </p>
+
+              <!-- Highlight Core Values Bento -->
+              <div class="values-chips-grid">
+                <div class="value-chip">
+                  <i class="fa-solid fa-brain"></i>
+                  <div>
+                    <h4>Algorithmic Rigor</h4>
+                    <p>4-Star HackerRank problem-solving mastery in core data structures.</p>
+                  </div>
+                </div>
+                <div class="value-chip">
+                  <i class="fa-solid fa-trophy"></i>
+                  <div>
+                    <h4>State-Level Grit</h4>
+                    <p>Proven competitive endurance in championship basketball tournaments.</p>
+                  </div>
+                </div>
+                <div class="value-chip">
+                  <i class="fa-solid fa-compass-drafting"></i>
+                  <div>
+                    <h4>Creative Polymath</h4>
+                    <p>Drawing, culinary innovation, and dynamic project management.</p>
+                  </div>
+                </div>
+                <div class="value-chip">
+                  <i class="fa-solid fa-people-group"></i>
+                  <div>
+                    <h4>Team Leadership</h4>
+                    <p>Inspiring peers and executing strategies under high pressure.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. EDUCATION SECTION ==================== -->
+    <section id="education" class="section education-section" aria-labelledby="eduHeading">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-badge">02 // ACADEMICS</span>
+          <h2 id="eduHeading" class="section-title">
+            ACADEMIC <span class="highlight-orange">FOUNDATION & MILESTONES</span>
+          </h2>
+          <p class="section-subtitle">Consistent scholastic distinction paired with extracurricular leadership.</p>
+        </div>
+
+        <!-- Vertical Animated Timeline -->
+        <div class="timeline-wrapper">
+          <div class="timeline-center-line" id="timelineCenterLine">
+            <div class="timeline-progress-fill"></div>
+          </div>
+
+          <!-- Timeline Item 1: Adamas University (Present) -->
+          <div class="timeline-item left-item" data-scroll-reveal>
+            <div class="timeline-dot">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div class="timeline-card glass-panel tilt-card" data-tilt data-tilt-max="6">
+              <div class="timeline-tag current-tag">PRESENT &bull; HIGHER EDUCATION</div>
+              <h3 class="timeline-institution">Adamas University</h3>
+              <h4 class="timeline-degree">School of Engineering and Technology (SOET)</h4>
+              <p class="timeline-period"><i class="fa-regular fa-calendar"></i> B.Tech in Computer Science & Engineering</p>
+              <p class="timeline-desc">
+                Immersed in advanced computer science coursework including Object-Oriented Systems, Data Structures, Algorithms, Discrete Mathematics, and Computer Architecture. Actively participating in technical coding challenges, student leadership initiatives, and competitive collegiate athletics.
+              </p>
+              <div class="timeline-chips">
+                <span class="chip">Data Structures</span>
+                <span class="chip">Java & C</span>
+                <span class="chip">Software Systems</span>
+                <span class="chip">Campus Basketball</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2: St. Joseph's College (ISC) -->
+          <div class="timeline-item right-item" data-scroll-reveal>
+            <div class="timeline-dot">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <div class="timeline-card glass-panel tilt-card" data-tilt data-tilt-max="6">
+              <div class="timeline-tag">HIGHER SECONDARY &bull; ISC EXAMINATION</div>
+              <h3 class="timeline-institution">St. Joseph's College</h3>
+              <h4 class="timeline-degree">ISC Examination (Class XII)</h4>
+              <p class="timeline-period"><i class="fa-regular fa-calendar"></i> Science & Mathematics Stream</p>
+              <p class="timeline-desc">
+                Graduated with top-tier marks in the prestigious ISC board examinations. Cultivated deep analytical problem-solving habits in physics and mathematics, while simultaneously captaining school basketball squads in high-intensity inter-school sports meets.
+              </p>
+              <div class="timeline-chips">
+                <span class="chip">ISC Distinction</span>
+                <span class="chip">Mathematics</span>
+                <span class="chip">Computer Studies</span>
+                <span class="chip">Inter-School Sports</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3: St. Joseph's College (ICSE) -->
+          <div class="timeline-item left-item" data-scroll-reveal>
+            <div class="timeline-dot">
+              <i class="fa-solid fa-school"></i>
+            </div>
+            <div class="timeline-card glass-panel tilt-card" data-tilt data-tilt-max="6">
+              <div class="timeline-tag">SECONDARY EDUCATION &bull; ICSE EXAMINATION</div>
+              <h3 class="timeline-institution">St. Joseph's College</h3>
+              <h4 class="timeline-degree">ICSE Examination (Class X)</h4>
+              <p class="timeline-period"><i class="fa-regular fa-calendar"></i> Comprehensive Sciences & Foundations</p>
+              <p class="timeline-desc">
+                Completed the ICSE board examinations with stellar academic distinction. Built a lifelong passion for computer programming through introductory coding principles, while leading extracurricular activities in drawing, athletics, and cultural management.
+              </p>
+              <div class="timeline-chips">
+                <span class="chip">ICSE Honors</span>
+                <span class="chip">Science & Math</span>
+                <span class="chip">Foundational Programming</span>
+                <span class="chip">Athletics Award</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. SKILLS & HACKERRANK SECTION ==================== -->
+    <section id="skills" class="section skills-section" aria-labelledby="skillsHeading">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-badge">03 // CAPABILITIES</span>
+          <h2 id="skillsHeading" class="section-title">
+            TECHNICAL ARSENAL & <span class="highlight-orange">HACKERRANK STAR</span>
+          </h2>
+          <p class="section-subtitle">Core programming languages, algorithmic problem solving, and verified achievements.</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Left Column: Core Skill Cards with Animated Meters -->
+          <div class="technical-skills-col">
+            <h3 class="col-title"><i class="fa-solid fa-code orange-icon"></i> Core Languages</h3>
+
+            <!-- Skill 1: C -->
+            <div class="skill-meter-card glass-panel tilt-card" data-tilt data-tilt-max="8">
+              <div class="skill-card-top">
+                <div class="skill-icon-box c-icon">
+                  <span class="code-symbol">&lt;C&gt;</span>
+                </div>
+                <div class="skill-info">
+                  <div class="skill-name-row">
+                    <h4 class="skill-name">C Language</h4>
+                    <span class="skill-percentage" data-target="90">0%</span>
+                  </div>
+                  <span class="skill-desc">Memory management, pointers, low-level data structures, algorithmic optimization.</span>
+                </div>
+              </div>
+              <div class="meter-bar-track">
+                <div class="meter-bar-fill" data-fill="90%"></div>
+              </div>
+            </div>
+
+            <!-- Skill 2: Java -->
+            <div class="skill-meter-card glass-panel tilt-card" data-tilt data-tilt-max="8">
+              <div class="skill-card-top">
+                <div class="skill-icon-box java-icon">
+                  <i class="fa-brands fa-java"></i>
+                </div>
+                <div class="skill-info">
+                  <div class="skill-name-row">
+                    <h4 class="skill-name">Java</h4>
+                    <span class="skill-percentage" data-target="88">0%</span>
+                  </div>
+                  <span class="skill-desc">Object-Oriented Design, Collections Framework, Exception Handling, Systems Logic.</span>
+                </div>
+              </div>
+              <div class="meter-bar-track">
+                <div class="meter-bar-fill" data-fill="88%"></div>
+              </div>
+            </div>
+
+            <!-- Skill 3: JavaScript -->
+            <div class="skill-meter-card glass-panel tilt-card" data-tilt data-tilt-max="8">
+              <div class="skill-card-top">
+                <div class="skill-icon-box js-icon">
+                  <i class="fa-brands fa-js"></i>
+                </div>
+                <div class="skill-info">
+                  <div class="skill-name-row">
+                    <h4 class="skill-name">JavaScript (ES6+)</h4>
+                    <span class="skill-percentage" data-target="85">0%</span>
+                  </div>
+                  <span class="skill-desc">Modern asynchronous JS, DOM manipulation, interactive animations, event architectures.</span>
+                </div>
+              </div>
+              <div class="meter-bar-track">
+                <div class="meter-bar-fill" data-fill="85%"></div>
+              </div>
+            </div>
+
+            <!-- Skill 4: HTML5 / CSS3 -->
+            <div class="skill-meter-card glass-panel tilt-card" data-tilt data-tilt-max="8">
+              <div class="skill-card-top">
+                <div class="skill-icon-box html-icon">
+                  <i class="fa-brands fa-html5"></i>
+                </div>
+                <div class="skill-info">
+                  <div class="skill-name-row">
+                    <h4 class="skill-name">HTML5 & Modern CSS</h4>
+                    <span class="skill-percentage" data-target="92">0%</span>
+                  </div>
+                  <span class="skill-desc">Semantic document models, glassmorphism, responsive grid/flexbox, keyframe motion.</span>
+                </div>
+              </div>
+              <div class="meter-bar-track">
+                <div class="meter-bar-fill" data-fill="92%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive HackerRank Showcase & Circular Rings -->
+          <div class="hackerrank-showcase-col">
+            <h3 class="col-title"><i class="fa-brands fa-hackerrank orange-icon"></i> Verified Competency</h3>
+
+            <!-- HackerRank 4-Star Glory Card -->
+            <div class="hackerrank-card glass-panel tilt-card" data-tilt data-tilt-max="10" data-tilt-glare="true" data-tilt-max-glare="0.25">
+              <div class="hr-card-badge">VERIFIED PROFILE</div>
+              <div class="hr-brand-header">
+                <div class="hr-logo-icon">
+                  <i class="fa-brands fa-hackerrank"></i>
+                </div>
+                <div class="hr-brand-info">
+                  <h4>HackerRank Showcase</h4>
+                  <p>Problem Solving & Algorithmic Foundations</p>
+                </div>
+              </div>
+
+              <!-- Animated 4 Stars Container -->
+              <div class="stars-lighting-container" id="starsLightingContainer" title="4-Star Rating Achieved!">
+                <div class="star-item" data-index="1"><i class="fa-solid fa-star"></i></div>
+                <div class="star-item" data-index="2"><i class="fa-solid fa-star"></i></div>
+                <div class="star-item" data-index="3"><i class="fa-solid fa-star"></i></div>
+                <div class="star-item" data-index="4"><i class="fa-solid fa-star"></i></div>
+                <div class="star-item unlit-star" data-index="5"><i class="fa-regular fa-star"></i></div>
+              </div>
+              <div class="stars-status-text">4-Star Verified Competency</div>
+
+              <p class="hr-card-desc">
+                Consistent practice solving algorithmic questions involving arrays, searching, sorting, string manipulation, and recursion across competitive programming sets.
+              </p>
+
+              <!-- Circular Progress Rings -->
+              <div class="circular-rings-grid">
+                <div class="ring-widget">
+                  <svg class="ring-svg" viewBox="0 0 100 100">
+                    <circle class="ring-bg" cx="50" cy="50" r="40"/>
+                    <circle class="ring-progress ring-progress-orange" cx="50" cy="50" r="40" data-circumference="251.2" data-percentage="88"/>
+                  </svg>
+                  <div class="ring-content">
+                    <span class="ring-val">88%</span>
+                    <span class="ring-lbl">Problem Solving</span>
+                  </div>
+                </div>
+
+                <div class="ring-widget">
+                  <svg class="ring-svg" viewBox="0 0 100 100">
+                    <circle class="ring-bg" cx="50" cy="50" r="40"/>
+                    <circle class="ring-progress ring-progress-cyan" cx="50" cy="50" r="40" data-circumference="251.2" data-percentage="92"/>
+                  </svg>
+                  <div class="ring-content">
+                    <span class="ring-val">92%</span>
+                    <span class="ring-lbl">Logic & C/Java</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hr-action-footer">
+                <a href="https://www.hackerrank.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary hr-view-btn magnetic-btn">
+                  <span>View HackerRank Profile</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== INFINITE MARQUEE STRIP 2 ==================== -->
+    <div class="marquee-strip marquee-reverse" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item"><i class="fa-solid fa-fire"></i> THE PLAYBOOK</span>
+        <span class="marquee-item"><i class="fa-solid fa-basketball"></i> THREE POINT DRILLS</span>
+        <span class="marquee-item"><i class="fa-solid fa-trophy"></i> STATE CHAMPIONSHIPS</span>
+        <span class="marquee-item"><i class="fa-solid fa-medal"></i> INTER-SCHOOL TOURNAMENTS</span>
+        <span class="marquee-item"><i class="fa-solid fa-compass"></i> OUTDOOR SPORTS</span>
+        <span class="marquee-item"><i class="fa-solid fa-handshake"></i> TEAM LEADERSHIP</span>
+        <span class="marquee-item"><i class="fa-solid fa-fire"></i> THE PLAYBOOK</span>
+        <span class="marquee-item"><i class="fa-solid fa-basketball"></i> THREE POINT DRILLS</span>
+        <span class="marquee-item"><i class="fa-solid fa-trophy"></i> STATE CHAMPIONSHIPS</span>
+        <span class="marquee-item"><i class="fa-solid fa-medal"></i> INTER-SCHOOL TOURNAMENTS</span>
+        <span class="marquee-item"><i class="fa-solid fa-compass"></i> OUTDOOR SPORTS</span>
+        <span class="marquee-item"><i class="fa-solid fa-handshake"></i> TEAM LEADERSHIP</span>
+      </div>
+    </div>
+
+    <!-- ==================== 5. SPORTS & ACHIEVEMENTS SECTION ==================== -->
+    <section id="sports" class="section sports-section" aria-labelledby="sportsHeading">
+      <!-- Full-Width Court Floor SVG Vector Background -->
+      <div class="court-floor-backdrop" aria-hidden="true">
+        <svg class="full-court-svg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+          <!-- Court Border -->
+          <rect x="20" y="20" width="1160" height="560" fill="none" stroke="currentColor" stroke-width="2" opacity="0.15"/>
+          <!-- Half Court Line -->
+          <line x1="600" y1="20" x2="600" y2="580" stroke="currentColor" stroke-width="2" opacity="0.15"/>
+          <!-- Center Circle -->
+          <circle cx="600" cy="300" r="100" fill="none" stroke="currentColor" stroke-width="2" opacity="0.15"/>
+          <circle cx="600" cy="300" r="20" fill="none" stroke="currentColor" stroke-width="2" opacity="0.15"/>
+          <!-- Left Key & 3-Point Arc -->
+          <rect x="20" y="210" width="220" height="180" fill="none" stroke="currentColor" stroke-width="2" opacity="0.15"/>
+          <path d="M20 90 L160 90 A230 230 0 0 1 160 510 L20 510" fill="none" stroke="currentColor" stroke-width="2" opacity="0.15"/>
+          <!-- Right Key & 3-Point Arc -->
+          <rect x="960" y="210" width="220" height="180" fill="none" stroke="currentColor" stroke-width="2" opacity="0.15"/>
+          <path d="M1180 90 L1040 90 A230 230 0 0 0 1040 510 L1180 510" fill="none" stroke="currentColor" stroke-width="2" opacity="0.15"/>
+        </svg>
+      </div>
+
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-badge">04 // ATHLETICS</span>
+          <h2 id="sportsHeading" class="section-title">
+            THE COURT & <span class="highlight-orange">CHAMPIONSHIP GRIT</span>
+          </h2>
+          <p class="section-subtitle">Tactical instincts, high-pressure execution, and sportsmanship on the hardwood.</p>
+        </div>
+
+        <!-- Sports Hero Callout Banner -->
+        <div class="sports-banner-card glass-panel">
+          <div class="sports-banner-content">
+            <div class="sports-banner-tag">
+              <i class="fa-solid fa-basketball"></i> BASKETBALL CULTURE
+            </div>
+            <h3 class="sports-banner-heading">
+              "The court taught me what textbooks never could: resilience under the buzzer."
+            </h3>
+            <p class="sports-banner-text">
+              Basketball isn't just a sport to me—it's a high-speed masterclass in team orchestration, spatial vision, and relentless energy. From organizing offensive sets to staying composed when the clock winds down, the lessons learned on court directly power my programming drive.
+            </p>
+          </div>
+          <div class="sports-interactive-play">
+            <div class="interactive-bouncing-ball" id="courtBouncingBall" title="Click to Bounce on the Hardwood!">
+              <i class="fa-solid fa-basketball court-ball-icon"></i>
+              <div class="interactive-ball-ripple"></div>
+            </div>
+            <span class="court-tap-hint">Tap ball to bounce</span>
+          </div>
+        </div>
+
+        <!-- Horizontal Sports Timeline -->
+        <div class="horizontal-sports-timeline">
+          <div class="timeline-step-card glass-panel tilt-card" data-tilt data-tilt-max="8">
+            <div class="step-badge">STEP 01</div>
+            <div class="step-icon-box">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h4 class="step-title">Inter-School Tournaments</h4>
+            <span class="step-subtitle">St. Joseph's College Representative</span>
+            <p class="step-desc">
+              Competed vigorously in inter-school basketball invitationals and city tournaments. Honed defensive lockdown skills, team chemistry, fast-break offense, and court discipline.
+            </p>
+            <div class="step-stat">
+              <span class="step-stat-val">100%</span>
+              <span class="step-stat-lbl">Hustle & Dedication</span>
+            </div>
+          </div>
+
+          <div class="timeline-step-card glass-panel tilt-card featured-step" data-tilt data-tilt-max="8">
+            <div class="step-badge state-badge">STEP 02 &bull; PINNACLE</div>
+            <div class="step-icon-box gold-icon">
+              <i class="fa-solid fa-trophy"></i>
+            </div>
+            <h4 class="step-title">State-Level Basketball</h4>
+            <span class="step-subtitle">Championship Representation</span>
+            <p class="step-desc">
+              Selected to battle in State-Level Basketball Championships against top regional teams. Thrived under extreme competitive stakes, intense physical conditioning, and tactical playbook execution.
+            </p>
+            <div class="step-stat">
+              <span class="step-stat-val">STATE</span>
+              <span class="step-stat-lbl">Level Competitor</span>
+            </div>
+          </div>
+
+          <div class="timeline-step-card glass-panel tilt-card" data-tilt data-tilt-max="8">
+            <div class="step-badge">STEP 03</div>
+            <div class="step-icon-box cyan-icon">
+              <i class="fa-solid fa-person-running"></i>
+            </div>
+            <h4 class="step-title">Outdoor Sports & Leadership</h4>
+            <span class="step-subtitle">Athletics & Cross-Training</span>
+            <p class="step-desc">
+              Passionate outdoor athlete engaged in track workouts, endurance sports, football, and fitness training. Believes active outdoor pursuits forge mental clarity and sharpen cognitive resilience.
+            </p>
+            <div class="step-stat">
+              <span class="step-stat-val">ELITE</span>
+              <span class="step-stat-lbl">Endurance Mindset</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. HOBBIES & INTERESTS (BENTO GRID) ==================== -->
+    <section id="hobbies" class="section hobbies-section" aria-labelledby="hobbiesHeading">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-badge">05 // DIVERSITY</span>
+          <h2 id="hobbiesHeading" class="section-title">
+            INTERESTS & <span class="highlight-orange">CREATIVE PURSUITS</span>
+          </h2>
+          <p class="section-subtitle">A balanced life fueled by culinary craft, visual art, athletics, and leadership.</p>
+        </div>
+
+        <!-- Bento Grid Layout -->
+        <div class="bento-grid">
+          <!-- Bento 1: Computer Science (Span 2 cols on desktop) -->
+          <div class="bento-card bento-wide glass-panel tilt-card" data-tilt data-tilt-max="6">
+            <div class="bento-bg-glow glow-cyan-small"></div>
+            <div class="bento-header">
+              <div class="bento-icon-box">
+                <i class="fa-solid fa-laptop-code"></i>
+              </div>
+              <span class="bento-category">CORE PASSION</span>
+            </div>
+            <div class="bento-content">
+              <h3 class="bento-title">Computer Science & Algorithms</h3>
+              <p class="bento-desc">
+                From low-level memory allocation in C to enterprise OOP in Java and dynamic frontend interfaces, building software feeds my curiosity for how complex systems think and scale.
+              </p>
+              <div class="bento-code-snippet">
+                <code>
+                  <span class="code-kw">while</span>(alive) {<br>
+                  &nbsp;&nbsp;code();<br>
+                  &nbsp;&nbsp;playBasketball();<br>
+                  &nbsp;&nbsp;createArt();<br>
+                  }
+                </code>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento 2: Basketball (Tall Card) -->
+          <div class="bento-card bento-tall glass-panel tilt-card" data-tilt data-tilt-max="6">
+            <div class="bento-bg-glow glow-orange-small"></div>
+            <div class="bento-header">
+              <div class="bento-icon-box orange-box">
+                <i class="fa-solid fa-basketball"></i>
+              </div>
+              <span class="bento-category">ATHLETICS</span>
+            </div>
+            <div class="bento-content">
+              <h3 class="bento-title">Basketball</h3>
+              <p class="bento-desc">
+                My sanctuary and proving ground. Ball handling, pull-up jumpers, defensive tenacity, and the camaraderie of a team striving for victory.
+              </p>
+              <div class="bento-visual-stat">
+                <span class="stat-highlight">23</span>
+                <span class="stat-text">The Champion Mindset</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento 3: Cooking & Culinary Craft -->
+          <div class="bento-card glass-panel tilt-card" data-tilt data-tilt-max="6">
+            <div class="bento-bg-glow glow-purple-small"></div>
+            <div class="bento-header">
+              <div class="bento-icon-box purple-box">
+                <i class="fa-solid fa-kitchen-set"></i>
+              </div>
+              <span class="bento-category">CULINARY ART</span>
+            </div>
+            <div class="bento-content">
+              <h3 class="bento-title">Cooking & Gastronomy</h3>
+              <p class="bento-desc">
+                Culinary arts are chemistry you can taste. Experimenting with spices, balanced textures, and precise cooking times is both therapeutic and creative.
+              </p>
+              <div class="bento-tags">
+                <span class="mini-tag">Flavor Alchemy</span>
+                <span class="mini-tag">Precision</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento 4: Drawing & Sketching -->
+          <div class="bento-card glass-panel tilt-card" data-tilt data-tilt-max="6">
+            <div class="bento-bg-glow glow-cyan-small"></div>
+            <div class="bento-header">
+              <div class="bento-icon-box cyan-box">
+                <i class="fa-solid fa-palette"></i>
+              </div>
+              <span class="bento-category">VISUAL ARTS</span>
+            </div>
+            <div class="bento-content">
+              <h3 class="bento-title">Drawing & Sketching</h3>
+              <p class="bento-desc">
+                Putting graphite to paper to render anatomy, perspective, and imaginative concepts. Enhances my eye for UI/UX symmetry and spatial proportions.
+              </p>
+              <div class="bento-tags">
+                <span class="mini-tag">Charcoal & Pencil</span>
+                <span class="mini-tag">Spatial Sense</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento 5: Outdoor Sports & Athletics -->
+          <div class="bento-card glass-panel tilt-card" data-tilt data-tilt-max="6">
+            <div class="bento-bg-glow glow-orange-small"></div>
+            <div class="bento-header">
+              <div class="bento-icon-box orange-box">
+                <i class="fa-solid fa-mountain-sun"></i>
+              </div>
+              <span class="bento-category">ENDURANCE</span>
+            </div>
+            <div class="bento-content">
+              <h3 class="bento-title">Outdoor Sports</h3>
+              <p class="bento-desc">
+                High-energy outdoor athletics, running, sprint intervals, and recreational games that keep physical stamina and mental alertness at peak levels.
+              </p>
+              <div class="bento-tags">
+                <span class="mini-tag">Cardio Stamina</span>
+                <span class="mini-tag">Agility</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento 6: Management & Leadership (Span 2 cols on desktop) -->
+          <div class="bento-card bento-wide glass-panel tilt-card" data-tilt data-tilt-max="6">
+            <div class="bento-bg-glow glow-purple-small"></div>
+            <div class="bento-header">
+              <div class="bento-icon-box purple-box">
+                <i class="fa-solid fa-people-roof"></i>
+              </div>
+              <span class="bento-category">ORGANIZATION</span>
+            </div>
+            <div class="bento-content">
+              <h3 class="bento-title">Management & Team Orchestration</h3>
+              <p class="bento-desc">
+                From organizing campus activities and group hackathon strategies to coordinating sports fixtures, I excel at turning chaos into structured execution with clear delegation and empathy.
+              </p>
+              <div class="bento-tags">
+                <span class="mini-tag">Conflict Resolution</span>
+                <span class="mini-tag">Strategic Roadmaps</span>
+                <span class="mini-tag">Team Morale</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. CONTACT SECTION ==================== -->
+    <section id="contact" class="section contact-section" aria-labelledby="contactHeading">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-badge">06 // IN TOUCH</span>
+          <h2 id="contactHeading" class="section-title">
+            LET'S BUILD <span class="highlight-orange">SOMETHING LEGENDARY</span>
+          </h2>
+          <p class="section-subtitle">Whether it's a software project, hackathon collaboration, or a basketball game, let's talk.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Form (Glass style with floating labels & validation) -->
+          <div class="contact-form-card glass-panel">
+            <h3 class="contact-card-title">Send a Direct Message</h3>
+            <p class="contact-card-sub">I typically respond within 24 hours.</p>
+
+            <form id="contactForm" class="contact-form" novalidate>
+              <!-- Name Input with Floating Label -->
+              <div class="form-group">
+                <input type="text" id="contactName" name="name" class="form-input" placeholder=" " required minlength="2">
+                <label for="contactName" class="floating-label">Your Full Name</label>
+                <span class="form-error-msg" id="nameError">Please enter your name (minimum 2 characters).</span>
+              </div>
+
+              <!-- Email Input with Floating Label -->
+              <div class="form-group">
+                <input type="email" id="contactEmail" name="email" class="form-input" placeholder=" " required>
+                <label for="contactEmail" class="floating-label">Email Address</label>
+                <span class="form-error-msg" id="emailError">Please enter a valid email address.</span>
+              </div>
+
+              <!-- Subject Input with Floating Label -->
+              <div class="form-group">
+                <input type="text" id="contactSubject" name="subject" class="form-input" placeholder=" " required minlength="3">
+                <label for="contactSubject" class="floating-label">Subject / Purpose</label>
+                <span class="form-error-msg" id="subjectError">Please enter a subject (minimum 3 characters).</span>
+              </div>
+
+              <!-- Message Input with Floating Label -->
+              <div class="form-group">
+                <textarea id="contactMessage" name="message" class="form-input form-textarea" rows="4" placeholder=" " required minlength="10"></textarea>
+                <label for="contactMessage" class="floating-label">Your Message...</label>
+                <span class="form-error-msg" id="messageError">Please provide a message with at least 10 characters.</span>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" id="contactSubmitBtn" class="btn btn-primary submit-btn magnetic-btn">
+                <span class="btn-text">
+                  <i class="fa-solid fa-paper-plane"></i>
+                  Send Message
+                </span>
+                <span class="btn-loading" aria-hidden="true">
+                  <i class="fa-solid fa-circle-notch fa-spin"></i>
+                  Transmitting...
+                </span>
+              </button>
+
+              <!-- Success Notification State -->
+              <div id="formSuccessMessage" class="form-success-state" role="status" aria-live="polite">
+                <div class="success-icon-wrap">
+                  <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h4>Message Transmitted Successfully!</h4>
+                <p>Thank you for reaching out! I've received your note and will get back to you shortly.</p>
+              </div>
+            </form>
+          </div>
+
+          <!-- Contact Quick Info & Social Channels -->
+          <div class="contact-info-col">
+            <div class="info-card glass-panel tilt-card" data-tilt data-tilt-max="6">
+              <h3 class="info-title">Contact Coordinates</h3>
+              <p class="info-desc">Feel free to connect directly via email or check my social and competitive coding profiles.</p>
+
+              <div class="coordinates-list">
+                <a href="mailto:dominicdebashismondal@gmail.com" class="coordinate-item">
+                  <div class="coord-icon"><i class="fa-solid fa-envelope"></i></div>
+                  <div class="coord-details">
+                    <span class="coord-lbl">EMAIL</span>
+                    <span class="coord-val">dominicdebashismondal@gmail.com</span>
+                  </div>
+                </a>
+
+                <div class="coordinate-item">
+                  <div class="coord-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="coord-details">
+                    <span class="coord-lbl">LOCATION</span>
+                    <span class="coord-val">Kolkata, West Bengal, India</span>
+                  </div>
+                </div>
+
+                <div class="coordinate-item">
+                  <div class="coord-icon"><i class="fa-solid fa-building-columns"></i></div>
+                  <div class="coord-details">
+                    <span class="coord-lbl">CAMPUS</span>
+                    <span class="coord-val">Adamas University, School of Engg.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Social Links Hub -->
+              <div class="social-hub">
+                <h4 class="social-hub-title">CONNECT WITH ME</h4>
+                <div class="social-links-grid">
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn github-btn magnetic-btn" aria-label="GitHub Profile">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
+                  </a>
+
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn linkedin-btn magnetic-btn" aria-label="LinkedIn Profile">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <span>LinkedIn</span>
+                  </a>
+
+                  <a href="https://www.hackerrank.com" target="_blank" rel="noopener noreferrer" class="social-btn hackerrank-btn magnetic-btn" aria-label="HackerRank Profile">
+                    <i class="fa-brands fa-hackerrank"></i>
+                    <span>HackerRank</span>
+                  </a>
+
+                  <a href="mailto:dominicdebashismondal@gmail.com" class="social-btn mail-btn magnetic-btn" aria-label="Direct Email">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Email Me</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== 8. FOOTER ==================== -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="footer-container">
+      <!-- Giant Outlined "DOMINIC" Wordmark -->
+      <div class="giant-wordmark-wrapper" aria-hidden="true">
+        <span class="giant-wordmark">DOMINIC</span>
+      </div>
+
+      <div class="footer-bottom-row">
+        <div class="footer-brand-info">
+          <div class="footer-logo">
+            <span class="brand-text">DOMINIC DEBASHIS MONDAL</span>
+          </div>
+          <p class="footer-tagline">Code meets the court. Built with passion, precision, and athletic grit.</p>
+        </div>
+
+        <!-- Back to Top Button -->
+        <div class="footer-actions">
+          <button id="backToTopBtn" class="back-to-top-btn magnetic-btn" aria-label="Back to top of page" title="Scroll to Top">
+            <i class="fa-solid fa-arrow-up"></i>
+            <span>BACK TO TOP</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-copyright-row">
+        <p>&copy; <span id="currentYear">2026</span> Dominic Debashis Mondal. All rights reserved.</p>
+        <p class="footer-tech-stack">HTML5 &bull; CSS3 &bull; Vanilla JavaScript &bull; GSAP &bull; Vanilla-Tilt</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CDN Scripts: GSAP, ScrollTrigger, Vanilla-Tilt -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+  <!-- Main Application Script -->
+  <script src="script.js"></script>
+</body>
+</html>
